@@ -2,13 +2,12 @@ import React from "react";
 import { useGetCatQuery } from "../../services/catApi";
 
 const Cat = () => {
-  // Using a query hook automatically fetches data and returns query values
   const { data: cats, error, isLoading } = useGetCatQuery();
-  // Individual hooks are also accessible under the generated endpoints:
-  // const { data, error, isLoading } = pokemonApi.endpoints.getPokemonByName.useQuery('bulbasaur')
 
   if (isLoading) return <div>LOADING...</div>;
   if (error) return <div>Error!</div>;
+
+  // Add Load/Refresh button when clicked cat image should appear
 
   return (
     <>
