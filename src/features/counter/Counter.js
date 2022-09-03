@@ -1,67 +1,68 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  decrement,
-  increment,
-  incrementByAmount,
-  incrementAsync,
-  incrementIfOdd,
-  selectCount,
-} from './counterSlice';
-import styles from './Counter.module.css';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { decrement, increment, reset, selectCount } from "./counterSlice";
 
-export function Counter() {
+const Counter = () => {
   const count = useSelector(selectCount);
   const dispatch = useDispatch();
-  const [incrementAmount, setIncrementAmount] = useState('2');
 
-  const incrementValue = Number(incrementAmount) || 0;
+  const handleDecrement = () => {
+    dispatch(decrement());
+  };
+
+  const handleIncrement = () => {
+    dispatch(increment());
+  };
+
+  const handleReset = () => {
+    dispatch(reset());
+  };
 
   return (
-    <div>
-      <div className={styles.row}>
+    <>
+      <h1>Counter</h1>
+      <div style={{ display: "flex" }}>
         <button
-          className={styles.button}
           aria-label="Decrement value"
-          onClick={() => dispatch(decrement())}
+          style={styles.button}
+          onClick={handleDecrement}
         >
           -
         </button>
-        <span className={styles.value}>{count}</span>
+        <div style={styles.count}>{count}</div>
         <button
-          className={styles.button}
           aria-label="Increment value"
-          onClick={() => dispatch(increment())}
+          style={styles.button}
+          onClick={handleIncrement}
         >
           +
         </button>
-      </div>
-      <div className={styles.row}>
-        <input
-          className={styles.textbox}
-          aria-label="Set increment amount"
-          value={incrementAmount}
-          onChange={(e) => setIncrementAmount(e.target.value)}
-        />
         <button
-          className={styles.button}
-          onClick={() => dispatch(incrementByAmount(incrementValue))}
+          aria-label="Reset value"
+          style={styles.button}
+          onClick={handleReset}
         >
-          Add Amount
-        </button>
-        <button
-          className={styles.asyncButton}
-          onClick={() => dispatch(incrementAsync(incrementValue))}
-        >
-          Add Async
-        </button>
-        <button
-          className={styles.button}
-          onClick={() => dispatch(incrementIfOdd(incrementValue))}
-        >
-          Add If Odd
+          Reset
         </button>
       </div>
-    </div>
+    </>
   );
-}
+};
+
+const styles = {
+  button: {
+    backgroundColor: "white",
+    border: "3px solid blue",
+    color: "blue",
+    fontSize: "20px",
+    padding: "5px 10px",
+    marginRight: "2px",
+  },
+  count: {
+    color: "red",
+    fontSize: "30px",
+    margin: "0 10px",
+  },
+};
+
+export default Counter;
