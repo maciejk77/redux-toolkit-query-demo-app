@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { decrement, increment, reset, selectCount } from "./counterSlice";
 
 const Counter = () => {
+  // Use of react-redux hooks to access the state
   const count = useSelector(selectCount); // not selectCount?
   const dispatch = useDispatch();
 
@@ -19,7 +20,7 @@ const Counter = () => {
   };
 
   return (
-    <>
+    <div style={styles.container}>
       <h1>Counter</h1>
       <div style={{ display: "flex" }}>
         <button
@@ -45,11 +46,12 @@ const Counter = () => {
           Reset
         </button>
       </div>
-    </>
+    </div>
   );
 };
 
 const styles = {
+  container: { border: "1px solid grey", padding: 10, marginBottom: 5 },
   button: {
     backgroundColor: "white",
     border: "3px solid blue",

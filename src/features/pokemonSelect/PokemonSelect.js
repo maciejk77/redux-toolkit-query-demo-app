@@ -20,7 +20,7 @@ const PokemonSelect = () => {
   };
 
   return (
-    <>
+    <div style={styles.container}>
       <h1>Select Pokemon</h1>
       <select onChange={handleChange}>
         {!activePokemon && <option> - not selected - </option>}
@@ -30,10 +30,12 @@ const PokemonSelect = () => {
           </option>
         ))}
       </select>
-    </>
+    </div>
   );
 };
 
-const styles = {};
+const styles = {
+  container: { border: "1px solid grey", padding: 10, marginBottom: 5 },
+};
 
 export default PokemonSelect;
