@@ -11,3 +11,4 @@
 - Ie API function getCat auto generate a hook useGetCatQuery which can be imported to FE together with {data, isLoadin, error, ...}
 - Api service hook has a option to not fetch data on each mount, but i.e on button click. In those cases it can be skipped with {skip} object and trigger refetch with a click, also read from cache, until next fetch dispatch
 - RTK Query borrows from some of modern frameworks i.e. Apollo with use of queries, mutations.
+- RTK provides Typesctipt types which further improves code quality
